@@ -7,13 +7,14 @@ use App\Models\Voedselpakket;
 
 class Voedselpakketten extends Controller
 {
+    
     private Voedselpakket $voedselpakket;
-
+//maakt een nieuwe instantie van de klasse Voedselpakket
     public function __construct()
     {
         $this->voedselpakket = new Voedselpakket();
     }
-
+//haalt alle voedselpakketten op
     public function index(): void
     {
         try {
@@ -28,7 +29,7 @@ class Voedselpakketten extends Controller
             throw $th;
         }
     }
-    
+   //haalt alle voedselpakketten op met de gekozen eetwens 
     public function filterByEetwens($eetwens): void
     {
         try {
@@ -43,11 +44,11 @@ class Voedselpakketten extends Controller
             throw $th;
         }
     }
-
+//haalt het gekozen voedselpakket op
     public function show(int $id): void
     {
         $this->setData([
-            'title' => 'Voedselpakketten',
+            'title' => 'Specefiek Voedselpakket',
             'voedselpakket' => Voedselpakket::findVoedselpakket($id),
         ]);
     
@@ -64,7 +65,7 @@ class Voedselpakketten extends Controller
                     'id' => $id,
                     'status' => $_POST['status'],
                 ]);
-
+                
                 $this->setData([
                     'title' => 'Voedselpakketten',
                     'message' => [
@@ -72,13 +73,14 @@ class Voedselpakketten extends Controller
                         'content' => 'Voedselpakket has been added edited'
                     ]
                 ]);
-
+                //laat een bericht zien dat het voedselpakket is bewerkt
                 $this->view('messages/index');
+                //redirect naar de voedselpakketten pagina
                 $this->redirect('/voedselpakketten', 3);
 
                 case 'GET':
                     $this->setData([
-                        'title' => 'Edit Voesdelpakket',
+                        'title' => 'Wijzig Voedselpakket',
                         'voedselpakket' => $this->voedselpakket->findVoedselpakket($id)
                     ]);
 

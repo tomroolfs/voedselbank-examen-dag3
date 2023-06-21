@@ -6,7 +6,7 @@
     <section class="max-w-6xl w-full flex flex-col">
         <div class="flex justify-between items-center">
             <h2 class="text-2xl font-bold">Overzicht gezinnen met voedselpakketten</h2>
-            <form id="filterForm" class="bg-transparent border border-slate-600 rounded" action="{{ path('voedselpakketten/filter') }}" method="GET">
+            <form id="filterForm" class="bg-transparent border border-slate-600 rounded" action="{{ path('voedselpakketten/show') }}" method="GET">
                 <select name="eetwens" onchange="document.getElementById('filterForm').submit()" style="background-color: #fff; color: #000; padding: 0.5rem;">
                     <option value="">Selecteer Eetwens</option>
                     {% for eetwens in eetwensen %}
@@ -15,7 +15,7 @@
                 </select>
             </form>
         </div>
-        {# Table for displaying voedselpakketten #}
+        {# Deze tabel haalt alle informatie op van de gezinnen #} 
         <table class="text-center">
             <thead>
                 <tr>
