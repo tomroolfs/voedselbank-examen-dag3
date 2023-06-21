@@ -1,16 +1,23 @@
-
-{% include "layouts/base.twig" %} {% block body %}
-<main class="flex flex-col items-center p-3 ">
+{% include "layouts/base.twig" %} 
+{% block body %}
+<main class="flex flex-col items-center p-3">
     <section class="max-w-6xl w-full">
-{# haalt de status van het gekozen voedselpakket op en laat je de informatie aanpassen #}
-        <p class="font-medium">Wijzig status</p>
-        <form method="post" action="{{ path(["voedselpakketten/edit", gezin.id]) }}" class="max-w-sm flex flex-col gap-2 border border-slate-600 rounded p-2">
+        <p class="font-medium">Welkom op de voedselpakket wijzigingen pagina</p>
+    </section>
+    <section class="max-w-6xl w-full flex flex-col">
+        <div class="flex justify-between items-center">
+            <h2 class="text-2xl font-bold">Wijzig voedselpakket {{ voedselpakket.id }}</h2>
+        </div>
+        <form method="post" action="{{ path(["voedselpakketten/edit", voedselpakket.id]) }}" class="max-w-sm flex flex-col gap-2 border border-slate-600 rounded p-2">
             <label class="flex flex-col gap-1">
-              <span class="text-sm font-medium">Status</span>
-              <input type="text" value="{{ gezin.status }}"name="status" required class="bg-transparent border border-slate-600 rounded px-2 py-1" />
+                <span class="text-sm font-medium">Status</span>
+                <select name="status" required class="bg-transparent border border-slate-600 rounded px-2 py-1">
+                    <option value="Uitgereikt">Uitgereikt</option>
+                    <option value="Niet uitgereikt">Niet uitgereikt</option>
+                </select>
             </label>
-            <button type="submit" class="bg-slate-600 text-white rounded px-2 py-1 ">Edit</button>
-          </form>
+            <button type="submit" class="bg-slate-600 text-white rounded px-2 py-1">Edit</button>
+        </form>
     </section>
 </main>
 {% endblock %}
