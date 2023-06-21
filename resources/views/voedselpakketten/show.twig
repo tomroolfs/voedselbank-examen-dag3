@@ -1,0 +1,37 @@
+
+{% include "layouts/base.twig" %} {% block body %}
+<main class="flex flex-col items-center p-3">
+    <section class="max-w-6xl w-full">
+        <p class="font-medium">Welkom op de voedselpakket details pagina</p>
+    </section>
+    <section class="max-w-6xl w-full flex flex-col">
+        <div class="flex justify-between items-center">
+            <h2 class="text-2xl font-bold">Voedselpakket details</h2>
+        </div>
+        {# deze tabel laat informatie zien over het gekozen voedselpakket #}
+        <table class="text-center">
+            <thead>
+                <tr>
+                    <th class="border border-gray-400 px-4 py-2">Naam</th>
+                    <th class="border border-gray-400 px-4 py-2">Omschrijving</th>
+                    <th class="border border-gray-400 px-4 py-2">Totaal aantal personen</th>
+                    <th class="border border-gray-400 px-4 py-2">Pakket nummer</th>
+                    <th class="border border-gray-400 px-4 py-2">Datum samenstelling</th>
+                    <th class="border border-gray-400 px-4 py-2">Datum uitgifte</th>
+                    <th class="border border-gray-400 px-4 py-2">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td class="border border-gray-400 px-4 py-2">{{ gezin.naam }}</td>
+                        <td class="border border-gray-400 px-4 py-2">{{ gezin.omschrijving }}</td>
+                        <td class="border border-gray-400 px-4 py-2">{{ gezin.totaalaantalpersonen }}</td>
+                        <td class="border border-gray-400 px-4 py-2">{{ gezin.datumsamengesteld }}</td>
+                        <td class="border border-gray-400 px-4 py-2">{{ gezin.datumuitgifte }}</td>
+                        <td class="border border-gray-400 px-4 py-2">{{ gezin.status }}</td>
+                    </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+{% endblock %}

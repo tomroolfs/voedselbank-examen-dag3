@@ -36,9 +36,15 @@ public static function getFilteredVoedselpakketten($eetwens): array
 public static function findVoedselpakket(int $id)
 {
     $db = Database::getInstance();
-    $db->query();
-    $db->bind('id', $id);
+    $db->query("SELECT gezin.id, gezin.naam, gezin.omschrijving, gezin.totaalaantalpersonen, voedselpakket.pakketnummer, voedselpakket.datumsamengesteld, voedselpakket.datumuitgifte, voedselpakket.status
+    FROM gezin
+    INNER JOIN voedselpakket ON voedselpakket.gezin_id = gezin.id
+    INNER JOIN persoon ON persoon.gezin_id = gezin.id
+    WHERE persoon.isvertegenwoordiger = 1 AND gezin.id = :id");
+
+    $db->bind(':id', $id);
     return $db->first();
 }
+
 
 }
