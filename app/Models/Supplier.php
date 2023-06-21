@@ -68,7 +68,7 @@ public function updateSupplier(array $data)
     $db->bind('contact_name', $data['contactname']);
     $db->bind('email', $data['email']);
     $db->bind('phone_number', $data['phone_number']);
-    $db->bind('id', $data['id']); // Add this line to pass the 'id' parameter
+    $db->bind('id', $data['id']);
     $db->execute();
 
     return $db->Count();

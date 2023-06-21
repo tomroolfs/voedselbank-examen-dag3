@@ -45,6 +45,15 @@ public static function findVoedselpakket(int $id)
     return $db->first();
 }
 
+public function updateVoedselpakket(array $data)
+{
+    $db = Database::getInstance();
+    $db->query("CALL UpdateVoedselpakketStatus(:id, :status)");
+    $db->bind('id', $data['id']);
+    $db->bind('status', $data['status']);
+    $db->execute();
+    return $db->count();
+}
 
 
 }

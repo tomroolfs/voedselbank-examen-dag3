@@ -18,6 +18,7 @@
                     <th class="border border-gray-400 px-4 py-2">Datum samenstelling</th>
                     <th class="border border-gray-400 px-4 py-2">Datum uitgifte</th>
                     <th class="border border-gray-400 px-4 py-2">Status</th>
+                    <th class="border border-gray-400 px-4 py-2">Wijzig status</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +30,13 @@
                     <td class="border border-gray-400 px-4 py-2">{{ voedselpakket.datumsamengesteld }}</td>
                     <td class="border border-gray-400 px-4 py-2">{{ voedselpakket.datumuitgifte }}</td>
                     <td class="border border-gray-400 px-4 py-2">{{ voedselpakket.status }}</td>
+                    <td class="border border-gray-400 px-4 py-2">
+                        <a
+                            href="{{ path(['voedselpakketten/edit', gezin.id]) }}"
+                            class="text-green-400 hover:text-red-100"
+                            >Wijzig</a
+                        >
+                    </td>
                 </tr>
             </tbody>
         </table>

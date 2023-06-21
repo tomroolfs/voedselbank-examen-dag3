@@ -53,5 +53,38 @@ class Voedselpakketten extends Controller
     
         $this->view('voedselpakketten/show');
     }
+
+//bewerkt de gekozen status van het voedselpakket
+    public function edit(int $id) :void
+    {
+        switch ($_SERVER ['REQUEST_METHOD']){
+            case 'POST':
+                
+                $this->voedselpakket->updateVoedselpakket([
+                    'id' => $id,
+                    'status' => $_POST['status'],
+                ]);
+
+                $this->setData([
+                    'title' => 'Voedselpakketten',
+                    'message' => [
+                        'title' => 'Voedselpakket Edited',
+                        'content' => 'Voedselpakket has been added edited'
+                    ]
+                ]);
+
+                $this->view('messages/index');
+                $this->redirect('/voedselpakketten', 3);
+
+                case 'GET':
+                    $this->setData([
+                        'title' => 'Edit Voesdelpakket',
+                        'voedselpakket' => $this->voedselpakket->findVoedselpakket($id)
+                    ]);
+
+                    $this->view('voedselpakketten/edit');
+                    break;
+        }
+    }
     
 }
