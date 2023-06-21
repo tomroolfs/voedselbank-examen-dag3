@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Controllers;
 
@@ -7,7 +7,6 @@ use App\Models\Voedselpakket;
 
 class Voedselpakketten extends Controller
 {
-
     private Voedselpakket $voedselpakket;
 
     public function __construct()
@@ -15,22 +14,33 @@ class Voedselpakketten extends Controller
         $this->voedselpakket = new Voedselpakket();
     }
 
-        public function index(): void
+    public function index(): void
     {
-       try {
-        $this->setData([
-        'title' => 'Voedselpakketten',
-        'voedselpakketten' => Voedselpakket::getVoedselpakketten(),
-        'eetwensen' => Voedselpakket::getEetwensen(),
-        ]);
-    
-        $this->view('voedselpakketten/index');
+        try {
+            $this->setData([
+                'title' => 'Voedselpakketten',
+                'voedselpakketten' => Voedselpakket::getVoedselpakketten(),
+                'eetwensen' => Voedselpakket::getEetwensen(),
+            ]);
 
-    } catch (\Throwable $th) {
-        throw $th;
+            $this->view('voedselpakketten/index');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
-    }
-
     
+    public function filterByEetwens($eetwens): void
+    {
+        try {
+            $this->setData([
+                'title' => 'Voedselpakketten - Filtered',
+                'voedselpakketten' => Voedselpakket::getFilteredVoedselpakketten($eetwens),
+                'eetwensen' => Voedselpakket::getEetwensen(),
+            ]);
 
+            $this->view('voedselpakketten/index');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 }
