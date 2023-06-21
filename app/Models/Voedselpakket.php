@@ -27,12 +27,18 @@ public static function getFilteredVoedselpakketten($eetwens): array
     $db->query("SELECT gezin.id, gezin.naam, gezin.omschrijving, gezin.aantalvolwassenen, gezin.aantalkinderen, gezin.aantalbabys, persoon.voornaam 
                 FROM gezin
                 INNER JOIN persoon ON persoon.gezin_id = gezin.id
-                WHERE persoon.isvertegenwoordiger = 1
-                AND gezin.eetwens = :eetwens");
+                WHERE persoon.isvertegenwoordiger = 1");
 
     $db->bind(':eetwens', $eetwens);
     return $db->many();
 }
 
+public static function findVoedselpakket(int $id)
+{
+    $db = Database::getInstance();
+    $db->query();
+    $db->bind('id', $id);
+    return $db->first();
+}
 
 }

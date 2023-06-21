@@ -43,4 +43,14 @@ class Voedselpakketten extends Controller
             throw $th;
         }
     }
+
+    public function show(int $id): void
+    {
+        $this->setData([
+        'title' => 'Voedselpakketten',
+        'voedselpakket' => Voedselpakket::findVoedselpakket($id),
+        ]);
+    
+        $this->view('voedselpakketten/show');
+    }
 }
