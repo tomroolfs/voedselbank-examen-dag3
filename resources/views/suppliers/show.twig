@@ -1,0 +1,40 @@
+
+{% include "layouts/base.twig" %} {% block body %}
+<main class="flex flex-col items-center p-3">
+    <section class="max-w-6xl w-full">
+        <p class="font-medium">Welcome to the supplier information page</p>
+    </section>
+    <section class="max-w-6xl w-full flex flex-col">
+        <div class="flex justify-between items-center">
+            <h2 class="text-2xl font-bold">Supplier information</h2>
+        </div>
+        {# deze tabel laat informatie zien over de gekozen supplier #}
+            <table class="text-center">
+                <thead>
+                    <tr>
+                        <th class="border border-gray-400 px-4 py-2">Logo</th>
+                        <th class="border border-gray-400 px-4 py-2">Contact name</th>
+                        <th class="border border-gray-400 px-4 py-2">Email</th>
+                        <th class="border border-gray-400 px-4 py-2">Phone number</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                
+    
+                    <tr>
+                        <td class="border border-gray-400 px-4 py-2 flex items-center justify-center object-fit">
+                        <img src="{{ supplier.image }}"
+                             alt="{{ supplier.name }}"
+                             class="w-12 h-12"/>
+                        </td>
+                        <td class="border border-gray-400 px-4 py-2">{{ supplier.contactname }}</td>
+                        <td class="border border-gray-400 px-4 py-2">{{ supplier.email }}</td>
+                        <td class="border border-gray-400 px-4 py-2">{{ supplier.phone_number }}</td>
+                        </tr>
+                
+                    </tbody>
+                </table>
+    </section>
+</main>
+{% endblock %}

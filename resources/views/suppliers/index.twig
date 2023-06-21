@@ -1,0 +1,70 @@
+
+{% include "layouts/base.twig" %} {% block body %}
+<main class="flex flex-col items-center p-3">
+    <section class="max-w-6xl w-full">
+        <p class="font-medium">Welcome to the suppliers page</p>
+    </section>
+    <section class="max-w-6xl w-full flex flex-col">
+        <div class="flex justify-between items-center">
+            <h2 class="text-2xl font-bold">Suppliers</h2>
+            <a
+                href="{{ path('suppliers/add') }}"
+                class="text-blue-400 hover:text-blue-100"
+                >Add supplier
+            </a>
+        </div>
+        {# in deze tabel komen de opgehaalde suppliers #}
+        <table class="text-center">
+            <thead>
+                <tr>
+                    <th class="border border-gray-400 px-4 py-2">Name</th>
+                    <th class="border border-gray-400 px-4 py-2">Logo</th>
+                    <th class="border border-gray-400 px-4 py-2">Street</th>
+                    <th class="border border-gray-400 px-4 py-2">Zipcode</th>
+                    <th class="border border-gray-400 px-4 py-2">City</th>
+                    <th class="border border-gray-400 px-4 py-2"> </th>
+                    <th class="border border-gray-400 px-4 py-2"> </th>
+                    <th class="border border-gray-400 px-4 py-2"> </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for supplier in suppliers %}
+
+                <tr>
+                    <td class="border border-gray-400 px-4 py-2">{{ supplier.name }}</td>
+                    <td class="border border-gray-400 px-4 py-2 flex items-center justify-center object-fit">
+                    <img src="{{ supplier.image }}"
+                         alt="{{ supplier.name }}"
+                         class="w-12 h-12"/>
+                    </td>
+                    <td class="border border-gray-400 px-4 py-2">{{ supplier.street }}</td>
+                    <td class="border border-gray-400 px-4 py-2">{{ supplier.zipcode }}</td>
+                    <td class="border border-gray-400 px-4 py-2">{{ supplier.city }}</td>
+                    <td class="border border-gray-400 px-4 py-2">
+                        <a
+                            href="{{ path(['suppliers/show', supplier.id]) }}"
+                            class="text-green-400 hover:text-red-100"
+                            >Show</a
+                        >
+                    </td>
+                    <td class="border border-gray-400 px-4 py-2">
+                        <a
+                            href="{{ path(['suppliers/edit', supplier.id]) }}"
+                            class="text-blue-400 hover:text-blue-100"
+                            >Edit</a
+                        >
+                    </td>
+                    <td class="border border-gray-400 px-4 py-2">
+                        <a
+                            href="{{ path(['suppliers/delete', supplier.id]) }}"
+                            class="text-red-400 hover:text-red-100"
+                            >Delete</a
+                        >
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</main>
+{% endblock %}

@@ -1,0 +1,45 @@
+
+{% include "layouts/base.twig" %} {% block body %}
+<main class="flex flex-col items-center p-3 ">
+    <section class="max-w-6xl w-full">
+{# laat je nieuwe informatie toevoegen voor een nieuwe supplier #}
+        <p class="font-medium">Add supplier</p>
+        <form method="post" action="{{ path("suppliers/add") }}" class="max-w-sm flex flex-col gap-2 border border-slate-600 rounded p-2">
+            <label class="flex flex-col gap-1">
+              <span class="text-sm font-medium">Name</span>
+              <input type="text" name="name" required class="bg-transparent border border-slate-600 rounded px-2 py-1" />
+            </label>
+            <label class="flex flex-col gap-1">
+              <span class="text-sm font-medium">Logo</span>
+              <input type="text" name="image" required class="bg-transparent border border-slate-600 rounded px-2 py-1" />
+            </label>
+            <label class="flex flex-col gap-1">
+              <span class="text-sm font-medium">Street</span>
+              <input type="text" name="street" required class="bg-transparent border border-slate-600 rounded px-2 py-1" />
+            </label>
+            <label class="flex flex-col gap-1">
+              <span class="text-sm font-medium">Zipcode</span>
+              <input type="text" name="zipcode" required class="bg-transparent border border-slate-600 rounded px-2 py-1" />
+            </label>
+            <label class="flex flex-col gap-1">
+              <span class="text-sm font-medium">City</span>
+              <input type="text" name="city" required class="bg-transparent border border-slate-600 rounded px-2 py-1" />
+            </label>
+            <label class="flex flex-col gap-1">
+              <span class="text-sm font-medium">Contact name</span>
+              <input type="text" name="contact_name" required class="bg-transparent border border-slate-600 rounded px-2 py-1" />
+            </label>
+            <label class="flex flex-col gap-1">
+              <span class="text-sm font-medium">Email</span>
+              <input type="email" name="email" required class="bg-transparent border border-slate-600 rounded px-2 py-1" />
+            </label>
+            <label class="flex flex-col gap-1">
+              <span class="text-sm font-medium">Phone number</span>
+              <input type="number" name="phone_number" required class="bg-transparent border border-slate-600 rounded px-2 py-1" />
+            </label>
+{# submit knop #}
+            <button type="submit" class="bg-slate-600 text-white rounded px-2 py-1 ">Add</button>
+          </form>
+    </section>
+</main>
+{% endblock %}
