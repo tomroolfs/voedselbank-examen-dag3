@@ -1,0 +1,12 @@
+{% include "layouts/base.twig" %} {% block body %}
+<main class="flex flex-col items-center p-3">
+    <section class="max-w-6xl w-full">
+        <p class="font-medium">Gezin informatie</p>
+    </section>
+    <section class="max-w-6xl w-full flex flex-col">
+        <div class="flex justify-between items-center">
+            <h2 class="text-2xl font-bold">Gezin nummer {{ gezin.id }} is niet actief</h2>
+        </div>
+    </section>
+</main>
+{% endblock %}

@@ -30,13 +30,20 @@
                     <td class="border border-gray-400 px-4 py-2">{{ voedselpakket.datumsamengesteld }}</td>
                     <td class="border border-gray-400 px-4 py-2">{{ voedselpakket.datumuitgifte }}</td>
                     <td class="border border-gray-400 px-4 py-2">{{ voedselpakket.status }}</td>
+                    {% if voedselpakket.id == 1 %}
                     <td class="border border-gray-400 px-4 py-2">
                         <a
                             href="{{ path(['voedselpakketten/edit', voedselpakket.id]) }}"
                             class="text-green-400 hover:text-red-100"
                             >Wijzig</a
                         >
-                    </td>
+                    </td>      
+                    {% else %}
+                    <td class="border border-gray-400 px-4 py-2">
+                        <button type="disabled" class="bg-slate-600 text-white rounded px-2 py-1">Niet actief</button> 
+                    </td> 
+                    {% endif %}
+
                 </tr>
             </tbody>
         </table>
